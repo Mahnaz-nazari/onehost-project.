@@ -1,0 +1,425 @@
+/* ==========================================================================
+   ۱. تنظیمات عمومی، فونت و اسکرول نرم
+   ========================================================================== */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
+
+body {
+  background-color: #050508;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   ۲. استایل منوی چسبان نئونی و شیشه‌ای (Navbar)
+   ========================================================================== */
+.custom-navbar {
+  background-color: rgba(0, 0, 0, 0.9) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #1f1f2e;
+  padding: 15px 0 !important;
+  transition: all 0.4s ease;
+}
+
+.custom-navbar .nav-link {
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #ffffff !important;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* انیمیشن خط زیر منو هنگام هاور */
+.custom-navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #00ffcc;
+  transition: width 0.3s ease;
+}
+
+.custom-navbar .nav-link:hover::after {
+  width: 100%;
+}
+
+.custom-navbar .nav-link:hover {
+  color: #00ffcc !important;
+}
+
+/* ==========================================================================
+   ۳. بخش هیرو (افکت تصویر متحرک پس‌زمینه)
+   ========================================================================== */
+.hero-bg {
+  min-height: 95vh;
+  background: linear-gradient(rgba(5, 5, 8, 0.6), rgba(5, 5, 8, 0.9)), 
+              url('../image/pricing-bg.jpg') no-repeat center center/cover;
+  background-attachment: fixed; /* افکت پارالاکس */
+  animation: fadeInBackground 2s ease-in-out;
+}
+
+.tracking-wide {
+  letter-spacing: 8px;
+  text-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+  animation: slideUp 1s ease-out;
+}
+
+/* انیمیشن دکمه‌ها */
+.btn {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.btn-primary {
+  background-color: #00ffcc !important;
+  border-color: #00ffcc !important;
+  color: #000000 !important;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: #00cc55 !important;
+  border-color: #00cc55 !important;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 255, 204, 0.4);
+}
+
+.btn-outline-light:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   ۴. عناوین مشترک بخش‌ها
+   ========================================================================== */
+.section-title {
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 15px;
+  color: #ffffff !important;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 2px;
+  background-color: #00ffcc;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width 0.4s ease;
+}
+
+/* ==========================================================================
+   ۵. بخش ABOUT US (انیمیشن‌ها و آیکون‌ها)
+   ========================================================================== */
+#about {
+  background-color: #101014 !important;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: smoothFadeUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.2s;
+}
+
+#about h2, #about p, #about h4 {
+  color: #ffffff !important;
+}
+
+#about .text-muted {
+  color: #d1d1e0 !important;
+}
+
+/* شیک کردن آیکون‌های بخش About Us */
+#about .bi {
+  display: inline-block;
+  transition: transform 0.3s ease-in-out, color 0.3s ease;
+}
+
+/* افکت چرخیدن آیکون‌ها وقتی موس روی باکس می‌رود */
+#about .col-md-4:hover .bi {
+  transform: rotate(360deg) scale(1.2);
+  color: #00ffcc !important;
+}
+
+/* ==========================================================================
+   ۶. بخش PRICING PLANS (افکت شیشه‌ای و حرکت از چپ)
+   ========================================================================== */
+#pricing {
+  background: linear-gradient(rgba(5, 5, 8, 0.85), rgba(5, 5, 8, 0.9)), 
+              url('../image/pricing-bg.jpg') no-repeat center center/cover !important;
+  background-attachment: fixed;
+  opacity: 0;
+  transform: translateX(-100px);
+  animation: smoothSlideInLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.1s;
+}
+
+@media (min-width: 992px) {
+  .col-lg-2\.4 {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+}
+
+.pricing-box {
+  background-color: rgba(11, 11, 18, 0.65) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.pricing-box:hover {
+  background-color: rgba(18, 18, 31, 0.9) !important;
+  transform: scale(1.05) translateY(-10px);
+  z-index: 5;
+  border-color: #00ffcc !important;
+  box-shadow: 0 20px 40px rgba(0, 255, 204, 0.25);
+}
+
+.pricing-box h5, .pricing-box h2, .pricing-box p, .pricing-box li {
+  color: #ffffff !important;
+}
+
+.pricing-box .text-muted, .pricing-box li.text-muted {
+  color: #a0a0b8 !important; 
+}
+
+#pricing .text-muted {
+  color: #b0b0c5 !important;
+  font-size: 16px;
+}
+
+.text-primary {
+  color: #00ffcc !important;
+}
+
+/* ==========================================================================
+   ۷. بخش SERVICES (Core Defenses) & CONTACT
+   ========================================================================== */
+/* انیمیشن زوم نرم برای بخش خدمات */
+#services {
+  opacity: 0;
+  transform: scale(0.92);
+  animation: smoothZoomIn 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.1s;
+}
+
+#services .text-muted {
+  color: #b0b0c5 !important;
+  font-size: 16px;
+}
+
+#services .border-secondary {
+  background-color: rgba(11, 11, 18, 0.6) !important;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+#services .border-secondary:hover {
+  border-color: #00ffcc !important;
+}
+
+#services .border-secondary h5 {
+  color: #ffffff !important;
+  font-weight: bold;
+}
+
+#services .border-secondary .text-muted {
+  color: #a0a0b8 !important;
+}
+
+/* انیمیشن حرکت از راست برای بخش فرم تماس */
+#contact {
+  background: linear-gradient(rgba(5, 5, 8, 0.85), rgba(5, 5, 8, 0.9)), 
+              url('../image/pricing-bg.jpg') no-repeat center center/cover !important;
+  background-attachment: fixed;
+  opacity: 0;
+  transform: translateX(-100px);
+  animation: smoothSlideInLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.1s;
+
+}
+
+#contact .text-muted {
+  color: #b0b0c5 !important;
+  font-size: 16px;
+}
+
+/* استایل فرم‌ها */
+.form-control {
+  color: #ffffff !important;
+  background-color: #0f0f16 !important;
+  border: 1px solid #2f2f45 !important;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  background-color: #12121f !important;
+  border-color: #00ffcc !important;
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.4) !important;
+}
+
+.form-control::placeholder {
+  color: #a0a0b8 !important;
+  opacity: 1;
+}
+
+
+
+/* ==========================================================================
+   ۹. بخش فوتر (Footer)
+   ========================================================================== */
+.footer-bg {
+  background-color: #07070a !important;
+  border-top: 1px solid #1f1f2e !important;
+  padding: 40px 0 20px 0 !important;
+}
+
+.footer-bg p, 
+.footer-bg .text-muted, 
+.footer-bg .footer-links a {
+  color: #d1d1e0 !important;
+}
+
+.footer-bg h4, 
+.footer-bg h6 {
+  color: #ffffff !important;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #00ffcc !important;
+}
+
+.footer-socials a {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-color: #12121f;
+  color: #ffffff;
+  text-align: center;
+  line-height: 32px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.footer-socials a:hover {
+  background-color: #00ffcc;
+  color: #000000;
+  transform: scale(1.1);
+}
+
+/* ==========================================================================
+   ۱۰. تعریف فریم‌های انیمیشن (Keyframes)
+   ========================================================================== */
+@keyframes fadeInBackground {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes smoothFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes smoothSlideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes smoothZoomIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes smoothSlideInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes blogPostFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* --- نوبار عمومی برای تمام صفحات --- */
+.custom-navbar {
+    background-color: #000000 !important;
+    padding: 15px 0 !important;
+    border-bottom: 1px solid #333 !important;
+}
+
+.custom-navbar .nav-link {
+    color: #ffffff !important;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* --- فوتر عمومی برای تمام صفحات --- */
+.footer-bg {
+    background-color: #07070a !important;
+    border-top: 1px solid #222 !important;
+    padding: 40px 0 !important;
+    color: #d1d1e0 !important;
+}
+/* جلوگیری از بیرون‌زدگی المان‌ها از کادر موبایل */
+img, video, .container, .row {
+    max-width: 100% !important;
+    overflow-x: hidden;
+}
+
+/* برای اینکه ستون‌ها در موبایل زیر هم قرار بگیرند */
+@media (max-width: 768px) {
+    .row {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+.hero-img {
+    height: 90vh;
+    object-fit: cover;
+    filter: brightness(45%);
+}
+
+.hero-caption {
+    bottom: 80px;
+}
